@@ -52,9 +52,39 @@ class login:
                                     width=14,
                                     font=("Arial", 18))
         self.entry_usuario.grid(row= 0, column=1, columnspan=3, padx=5, sticky="w")
-    
         
         
+        self.label_contraseña = Label(self.frame_inferior,
+                                   text="Contraseña:",
+                                   font= ("Arial", 18),
+                                   bg = fondo,
+                                   fg="black")
+        self.label_contraseña.grid(row=1, column=0, padx=10, sticky="e")
+        
+        self.entry_contraseña = Entry (self.frame_inferior,
+                                    bd=0,
+                                    width=14,
+                                    font=("Arial", 18),
+                                    show="*")
+        self.entry_contraseña.grid(row= 1, column=1, columnspan=3, padx=5, sticky="w")
+        
+        #Boton para ingresar
+        
+        self.boton_ingresar = Button(self.frame_inferior,
+                                     text="Ingresar",
+                                     width=16,
+                                     font=("Arial",12),
+                                     command=self.entrar)
+        self.boton_ingresar.grid(row=2, column=0, columnspan=2, pady=35)     
+                
         mainloop()
-
+        
+    def entrar(self):
+        nombre = self.entry_usuario.get()
+        contra = self.entry_contraseña.get()
+            
+        if nombre == "Admin" and contra == "Admin123":
+            messagebox.showinfo("Acceso Correcto", "Ingresando...")
+        else:
+            messagebox.showerror("Acceso Denegado", "Usuario y/o Contraseña INCORRECTO")
 login()
